@@ -1,0 +1,345 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #FFFFFF;
+    max-width: 400px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+/* ОБЩИЕ ЭКРАНЫ */
+.screen {
+    padding: 20px;
+    padding-bottom: 80px;
+    min-height: 100vh;
+}
+
+/* ШАПКА */
+.header {
+    margin: 20px 0 30px;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* ПОИСК */
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #F2F3F3;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-bottom: 30px;
+}
+
+.search-icon {
+    margin-right: 10px;
+    color: #636D75;
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #636D75;
+    flex: 1;
+}
+
+/* КАТЕГОРИИ */
+.categories {
+    margin-bottom: 30px;
+}
+
+.category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    cursor: pointer;
+}
+
+.category-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.category-icon {
+    font-size: 20px;
+}
+
+.category-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+}
+
+.category-arrow {
+    font-size: 24px;
+    color: #878F97;
+}
+
+.divider {
+    height: 1px;
+    background: #E5E5E5;
+    margin: 0 -20px;
+}
+
+/* НИЖНЯЯ НАВИГАЦИЯ */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #E5E5E5;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.nav-item.active {
+    color: #0075E9;
+}
+
+.nav-icon {
+    font-size: 22px;
+}
+
+.nav-text {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* КОНВЕРТЕР */
+.converter-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.back-btn {
+    font-size: 30px;
+    cursor: pointer;
+    color: #0075E9;
+}
+
+.converter-header h2 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.converter-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-section, .result-section {
+    background: #F0EFEF;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.input-label, .result-label {
+    font-size: 14px;
+    color: #878F97;
+    margin-bottom: 10px;
+}
+
+.input-display, .result-display {
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
+    min-height: 50px;
+}
+
+/* ВЫБОР ЕДИНИЦ */
+.unit-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.unit-group {
+    flex: 1;
+    background: white;
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.unit-label {
+    font-size: 12px;
+    color: #878F97;
+    margin-bottom: 5px;
+}
+
+.unit-display {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.unit-btn {
+    width: 100%;
+    padding: 8px;
+    background: #F0EFEF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.swap-btn {
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0 10px;
+    color: #0075E9;
+}
+
+/* КЛАВИАТУРА */
+.keypad {
+    margin-top: 20px;
+}
+
+.key-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.key {
+    flex: 1;
+    height: 70px;
+    border: none;
+    border-radius: 35px;
+    background: #F0EFEF;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.key.wide {
+    flex: 2;
+}
+
+.key.operator {
+    background: #61B0FF;
+    color: white;
+}
+
+.key.calculate {
+    background: #0075E9;
+}
+
+/* КАЛЬКУЛЯТОР */
+.calculator-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.calc-display {
+    background: #F0EFEF;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 48px;
+    font-weight: 500;
+    text-align: right;
+    min-height: 80px;
+    overflow-x: auto;
+}
+
+/* МОДАЛЬНОЕ ОКНО ВЫБОРА ЕДИНИЦ */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 350px;
+    max-height: 80vh;
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.modal-header h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.close-btn {
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #878F97;
+}
+
+.modal-body {
+    padding: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.unit-option {
+    padding: 15px;
+    border-bottom: 1px solid #E5E5E5;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.unit-option:last-child {
+    border-bottom: none;
+}
+
+.unit-option:hover {
+    background: #F0F0F0;
+}
+
+/* АКТИВНЫЕ СОСТОЯНИЯ */
+button:active, .category:active {
+    opacity: 0.7;
+    transform: scale(0.98);
+}

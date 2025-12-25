@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конвертер и калькулятор</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- ГЛАВНЫЙ ЭКРАН -->
+<div class="screen" id="mainScreen">
+    <div class="header">
+        <h1>📐 Конвертер и калькулятор</h1>
+    </div>
+
+    <div class="search-box">
+        <div class="search-icon">🔍</div>
+        <input type="text" placeholder="Найти" class="search-input">
+    </div>
+
+    <div class="categories">
+        <div class="category" onclick="openConverter('Длина')">
+            <div class="category-left">
+                <span class="category-icon">📏</span>
+                <span class="category-text">Длина</span>
+            </div>
+            <div class="category-arrow">›</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="category" onclick="openConverter('Вес')">
+            <div class="category-left">
+                <span class="category-icon">⚖️</span>
+                <span class="category-text">Вес и масса</span>
+            </div>
+            <div class="category-arrow">›</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="category" onclick="openConverter('Температура')">
+            <div class="category-left">
+                <span class="category-icon">🌡️</span>
+                <span class="category-text">Температура</span>
+            </div>
+            <div class="category-arrow">›</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="category" onclick="openConverter('Объем')">
+            <div class="category-left">
+                <span class="category-icon">🧪</span>
+                <span class="category-text">Объем</span>
+            </div>
+            <div class="category-arrow">›</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="category" onclick="openConverter('Время')">
+            <div class="category-left">
+                <span class="category-icon">⏰</span>
+                <span class="category-text">Время</span>
+            </div>
+            <div class="category-arrow">›</div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item active" onclick="goToHome()">
+            <div class="nav-icon">📐</div>
+            <div class="nav-text">Конвертер</div>
+        </div>
+        <div class="nav-item" onclick="openCalculator()">
+            <div class="nav-icon">🧮</div>
+            <div class="nav-text">Калькулятор</div>
+        </div>
+    </div>
+</div>
+
+<!-- ЭКРАН КОНВЕРТЕРА -->
+<div class="screen" id="converterScreen" style="display: none;">
+    <div class="converter-header">
+        <div class="back-btn" onclick="goToHome()">‹</div>
+        <h2 id="converterTitle">Конвертер длины</h2>
+    </div>
+
+    <div class="converter-content">
+        <div class="input-section">
+            <div class="input-label">Значение</div>
+            <div class="input-display" id="converterValue">0</div>
+        </div>
+
+        <div class="unit-selector">
+            <div class="unit-group">
+                <div class="unit-label">Из</div>
+                <div class="unit-display" id="fromUnit">метры</div>
+                <button class="unit-btn" onclick="changeUnit('from')">▼</button>
+            </div>
+
+            <div class="swap-btn" onclick="swapUnits()">⇅</div>
+
+            <div class="unit-group">
+                <div class="unit-label">В</div>
+                <div class="unit-display" id="toUnit">сантиметры</div>
+                <button class="unit-btn" onclick="changeUnit('to')">▼</button>
+            </div>
+        </div>
+
+        <div class="result-section">
+            <div class="result-label">Результат</div>
+            <div class="result-display" id="converterResult">0</div>
+        </div>
+
+        <div class="keypad">
+            <div class="key-row">
+                <button class="key" onclick="addDigit('7')">7</button>
+                <button class="key" onclick="addDigit('8')">8</button>
+                <button class="key" onclick="addDigit('9')">9</button>
+                <button class="key operator" onclick="clearInput()">AC</button>
+            </div>
+
+            <div class="key-row">
+                <button class="key" onclick="addDigit('4')">4</button>
+                <button class="key" onclick="addDigit('5')">5</button>
+                <button class="key" onclick="addDigit('6')">6</button>
+                <button class="key operator" onclick="backspace()">⌫</button>
+            </div>
+
+            <div class="key-row">
+                <button class="key" onclick="addDigit('1')">1</button>
+                <button class="key" onclick="addDigit('2')">2</button>
+                <button class="key" onclick="addDigit('3')">3</button>
+                <button class="key operator" onclick="addDecimal()">.</button>
+            </div>
+
+            <div class="key-row">
+                <button class="key wide" onclick="addDigit('0')">0</button>
+                <button class="key operator" onclick="toggleSign()">±</button>
+                <button class="key operator calculate" onclick="calculate()">=</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ЭКРАН КАЛЬКУЛЯТОРА -->
+<div class="screen" id="calculatorScreen" style="display: none;">
+    <div class="converter-header">
+        <div class="back-btn" onclick="goToHome()">‹</div>
+        <h2>Калькулятор</h2>
+    </div>
+
+    <div class="calculator-content">
+        <div class="calc-display" id="calcDisplay">0</div>
+
+        <div class="keypad">
+            <div class="key-row">
+                <button class="key operator" onclick="calcInput('AC')">AC</button>
+                <button class="key operator" onclick="calcInput('±')">±</button>
+                <button class="key operator" onclick="calcInput('%')">%</button>
+                <button class="key operator" onclick="calcInput('/')">÷</button>
+            </div>
+
+            <div class="key-row">
+                <button class="key" onclick="calcInput('7')">7</button>
+                <button class="key" onclick="calcInput('8')">8</button>
+                <button class="key" onclick="calcInput('9')">9</button>
+                <button class="key operator" onclick="calcInput('*')">×</button>
+            </div>
+
+            <div class="key-row">
+                <button class="key" onclick="calcInput('4')">4</button>
+                <button class="key" onclick="calcInput('5')">5</button>
+                <button class="key" onclick="calcInput('6')">6</button>
+                <button class="key operator" onclick="calcInput('-')">-</button>
+            </div>
+
+            <div class="key-row">
+                <button class="key" onclick="calcInput('1')">1</button>
+                <button class="key" onclick="calcInput('2')">2</button>
+                <button class="key" onclick="calcInput('3')">3</button>
+                <button class="key operator" onclick="calcInput('+')">+</button>
+            </div>
+
+            <div class="key-row">
+                <button class="key wide" onclick="calcInput('0')">0</button>
+                <button class="key" onclick="calcInput('.')">.</button>
+                <button class="key operator calculate" onclick="calcInput('=')">=</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ВЫБОР ЕДИНИЦЫ -->
+<div class="modal" id="unitModal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Выберите единицу</h3>
+            <button class="close-btn" onclick="closeUnitModal()">×</button>
+        </div>
+        <div class="modal-body" id="unitList"></div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

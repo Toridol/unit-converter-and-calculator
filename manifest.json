@@ -1,0 +1,21 @@
+{
+  "name": "📐 Конвертер и Калькулятор",
+  "short_name": "Конвертер",
+  "description": "Приложение для конвертации единиц и простых вычислений",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#FFFFFE",
+  "theme_color": "#0075E9",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
